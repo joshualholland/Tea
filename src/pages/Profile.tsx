@@ -4,7 +4,7 @@ import { ThemeProvider } from 'styled-components'
 import { defaultTheme } from '../utils/styles/theme'
 import Nav from '../components/Nav'
 
-const Home: NextPage = () => {
+const Profile: NextPage = () => {
   return (
     <ThemeProvider theme={defaultTheme}>
       <Nav />
@@ -12,4 +12,4 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home
+export default Profile
