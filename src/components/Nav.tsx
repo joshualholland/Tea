@@ -57,7 +57,8 @@ const Items = styled.div`
 
 const Logo = styled.div<IProps>`
   font-size: 24px;
-  color: ${props => props.theme.palette.secondary.main};
+  font-family: ${props => props.theme.font.secondary};
+  color: ${props => props.theme.palette.primary.main};
   text-decoration: none;
 `
 
@@ -70,7 +71,7 @@ const Right = styled.div`
 
 const Link = styled.p`
   margin-left: 24px;
-
+  font-family: ${props => props.theme.font.primary};
   &:first-child() {
     margin-left: 0;
   }

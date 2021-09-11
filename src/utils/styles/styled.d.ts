@@ -15,6 +15,10 @@ declare module 'styled-components' {
       }
       primary: IPalette
       secondary: IPalette
+    },
+    font: {
+      primary: string
+      secondary: string
     }
   }
 }
