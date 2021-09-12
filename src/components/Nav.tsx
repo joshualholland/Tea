@@ -9,10 +9,10 @@ const Nav: React.FC = () => {
         <Items>
           <Logo>Cannapi</Logo>
           <Right>
-            <Link>Home</Link>
+            <Link href='/'>Home</Link>
             <Link>Messages</Link>
             <Link>Notifications</Link>
-            <Link><Profile></Profile></Link>
+            <Link href='/profile'><Profile></Profile></Link>
           </Right>
         </Items>
       </Inner>
@@ -52,7 +52,7 @@ const Inner = styled.div`
 const Items = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-end;
 `
 
 const Logo = styled.div<IProps>`
@@ -69,9 +69,12 @@ const Right = styled.div`
   align-items: center;
 `
 
-const Link = styled.p`
+const Link = styled.a`
   margin-left: 24px;
   font-family: ${props => props.theme.font.primary};
+  text-decoration: none;
+  color: #000000;
+
   &:first-child() {
     margin-left: 0;
   }
