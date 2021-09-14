@@ -35,7 +35,7 @@ export default class MyDocument extends Document {
           <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet" />
           <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
         </Head>
-        <body>
+        <body style={{ margin: 0 }}>
           <Main />
           <NextScript />
         </body>

@@ -34,15 +34,13 @@ export default Nav
 const Wrapper = styled.header`
   background-color: #fff;
   box-shadow: rgb(0 0 0 / 10%) 0px 2px 10px 0px;
-  position: fixed;
   padding: 1rem;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
+  display: flex;
+  align-items: center;
 `
 
 const Inner = styled.div`
+  width: 100%;
   max-width: 1048px;
   margin: 0 auto;
   padding: 0 12px;
