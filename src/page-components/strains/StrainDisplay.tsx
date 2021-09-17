@@ -1,32 +1,14 @@
 import React from 'react'
 import Image from 'next/image'
 import styled from 'styled-components'
-import { posts } from '../../utils/data/reviewposts'
+import StrainCard from './/StrainCard.tsx'
 import PrimaryButton from '../../components/PrimaryButton'
 
-const ReviewLists: React.FC = () => (
+const StrainDisplay: React.FC = () => (
   <Wrapper>
     <ListWrapper>
       <List>
-        {/* Checks for posts array and maps through it if it exists */}
-        {posts && posts.map((post, index) => (
-          <Items key={index}>
-            <Image 
-             src={post.photo} //I'm not doing this correctly, next/image wants a url
-             // I want to add border-radius but next/img only accepts className to do this - will add later
-             //alt="Picture of the author"
-             width={700}
-             height={500}
-             />
-            <Title>{post.title}</Title>
-             {/* Button not displaying as intended. Want it under the title. CSS I can come back to.s */}
-            <PrimaryButton />
-            <Body>
-              {post.body}
-            </Body>
-           
-          </Items>
-        ))}
+        <StrainCard  />
       </List>
     </ListWrapper>
   </Wrapper>
@@ -41,7 +23,7 @@ enum VARIANT {
   SECONDARY
 }
 
-export default ReviewLists
+export default StrainDisplay
 
 const Wrapper = styled.section<IProps>`
   width: 100%;
@@ -53,8 +35,8 @@ const Wrapper = styled.section<IProps>`
 const ListWrapper = styled.div<IProps>`
   //box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
   width: 100%;
-  margin-top: 1.5em;  
-  margin-bottom: 1.5em;  
+  margin-top: 1em;  
+  margin-bottom: 1em;  
   background: ${props => props.theme.palette.common.white};
   height: auto;
   border-radius: ${props => props.theme.borderRadius};
@@ -62,14 +44,14 @@ const ListWrapper = styled.div<IProps>`
 
 const List = styled.ul<IProps>`
   margin: 1em; 
-  padding: 1em 1em; 
+  padding: 2em 1em; 
   list-style: none;
 `
 
 const Items = styled.li<IProps>`
   display: flex;
   flex-flow:row;
-  margin: 1.5em;
+  margin: 1em;
   padding: 1.2em;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
   border-radius: ${props => props.theme.borderRadius};
