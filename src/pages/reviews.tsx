@@ -5,7 +5,7 @@ import ReviewLists from '../page-components/reviews/ReviewList'
 
 const user: string = 'John Doe'
 
-const Profile: NextPage = () => {
+const Reviews: NextPage = () => {
   return (
     <>
       <NextSeo
@@ -17,4 +17,4 @@ const Profile: NextPage = () => {
   )
 }
 
-export default Profile
+export default Reviews

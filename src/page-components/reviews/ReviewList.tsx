@@ -1,35 +1,23 @@
 import React from 'react'
 import styled from 'styled-components'
-
-
-const post: string = 'review one'
+import { posts } from '../../utils/data/reviewposts'
 
 const ReviewLists: React.FC = () => (
   <Wrapper>
-      <ListWrapper>
-        <ULStart>
-            <LIStart key={post}>
-                <ReviewImg />
-                <ReviewTitle>
-                    Title of Post #1
-                    <ReviewBody>
-                    Vitae congue mauris rhoncus aenean vel elit scelerisque mauris pellentesque. Turpis cursus in hac habitasse platea dictumst quisque. Vitae turpis massa sed elementum tempus egestas sed sed. Eget nunc scelerisque viverra mauris in aliquam sem fringilla. Fringilla ut morbi tincidunt augue interdum velit. Morbi non arcu risus quis varius quam. Senectus et netus et malesuada fames ac turpis. Consequat interdum varius sit amet. Vel orci porta non pulvinar neque. Ante metus dictum at tempor commodo ullamcorper. Lectus vestibulum mattis ullamcorper velit sed ullamcorper. Magna ac placerat vestibulum lectus mauris ultrices eros in. Quis blandit turpis cursus in hac.
-                    </ReviewBody>
-                </ReviewTitle> 
-                  
-            </LIStart>
-            <LIStart key={post}>
-                <ReviewImg />
-                <ReviewTitle>
-                    Title of Post #2
-                    <ReviewBody>
-                    Vitae congue mauris rhoncus aenean vel elit scelerisque mauris pellentesque. Turpis cursus in hac habitasse platea dictumst quisque. Vitae turpis massa sed elementum tempus egestas sed sed. Eget nunc scelerisque viverra mauris in aliquam sem fringilla. Fringilla ut morbi tincidunt augue interdum velit. Morbi non arcu risus quis varius quam. Senectus et netus et malesuada fames ac turpis. Consequat interdum varius sit amet. Vel orci porta non pulvinar neque. Ante metus dictum at tempor commodo ullamcorper. Lectus vestibulum mattis ullamcorper velit sed ullamcorper. Magna ac placerat vestibulum lectus mauris ultrices eros in. Quis blandit turpis cursus in hac.
-                    </ReviewBody>
-                </ReviewTitle>  
-                      
-            </LIStart>    
-        </ULStart>    
-      </ListWrapper>  
+    <ListWrapper>
+      <List>
+        {/* Checks for posts array and maps through it if it exists */}
+        {posts && posts.map((post, index) => (
+          <Items key={index}>
+            <Img />
+            <Title>{post.title}</Title>
+            <Body>
+              {post.body}
+            </Body>
+          </Items>
+        ))}
+      </List>
+    </ListWrapper>
   </Wrapper>
 )
 
@@ -61,12 +49,12 @@ const ListWrapper = styled.div<IProps>`
   border-radius: ${props => props.theme.borderRadius};
 `
 
-const ULStart = styled.ul<IProps>`
+const List = styled.ul<IProps>`
   margin: 1em; 
   list-style: none;
 `
 
-const LIStart = styled.li<IProps>`
+const Items = styled.li<IProps>`
   display: flex;
   flex-flow:row;
   margin: 1em;
@@ -79,7 +67,7 @@ const LIStart = styled.li<IProps>`
 `
 
 
-const ReviewImg = styled.div<IProps>`
+const Img = styled.div<IProps>`
   background-image: url('https://stonerthings.com/wp-content/uploads/2013/11/weed-in-a-jar.jpg');
   width: 20%;
   height: 150px;
@@ -89,12 +77,12 @@ const ReviewImg = styled.div<IProps>`
  
 `
 
-const ReviewTitle = styled.h3<IProps>`
+const Title = styled.h3<IProps>`
   margin: 1em;  
   width: 100%; 
 `
 
-const ReviewBody = styled.p<IProps>`
+const Body = styled.p<IProps>`
   font-size: 12px;
   color: ${props => props.theme.palette.common.black};
 `
