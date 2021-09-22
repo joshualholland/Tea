@@ -1,14 +1,14 @@
 import React from 'react'
 import Image from 'next/image'
 import styled from 'styled-components'
-import StrainCard from './/StrainCard.tsx'
+import StrainCard from './StrainCard'
 import PrimaryButton from '../../components/PrimaryButton'
 
 const StrainDisplay: React.FC = () => (
   <Wrapper>
     <ListWrapper>
       <List>
-        <StrainCard  />
+        <StrainCard />
       </List>
     </ListWrapper>
   </Wrapper>

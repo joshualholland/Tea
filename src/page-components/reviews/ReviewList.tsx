@@ -11,20 +11,19 @@ const ReviewLists: React.FC = () => (
         {/* Checks for posts array and maps through it if it exists */}
         {posts && posts.map((post, index) => (
           <Items key={index}>
-            <Image 
-             src={post.photo} //I'm not doing this correctly, next/image wants a url
-             // I want to add border-radius but next/img only accepts className to do this - will add later
-             //alt="Picture of the author"
-             width={700}
-             height={500}
-             />
+            <StyledImage
+              src={post.photo}
+              alt={post.title}
+              width={675}
+              height={900}
+            />
             <Title>{post.title}</Title>
-             {/* Button not displaying as intended. Want it under the title. CSS I can come back to.s */}
+            {/* Button not displaying as intended. Want it under the title. CSS I can come back to.s */}
             <PrimaryButton />
             <Body>
               {post.body}
             </Body>
-           
+
           </Items>
         ))}
       </List>
@@ -82,9 +81,15 @@ const Title = styled.h3<IProps>`
   margin: 1em;  
   width: 90%; 
   display: block;
+  font-family: ${props => props.theme.font.secondary};
 `
 
 const Body = styled.p<IProps>`
   font-size: 12px;
   color: ${props => props.theme.palette.common.black};
+  font-family: ${props => props.theme.font.primary};
+`
+
+const StyledImage = styled(Image)`
+  border-radius: 8px;
 `
