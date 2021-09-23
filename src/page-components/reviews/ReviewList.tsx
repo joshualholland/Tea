@@ -8,10 +8,8 @@ const ReviewLists: React.FC = () => (
   <Wrapper>
     <ListWrapper>
       <List>
-        {/* Checks for posts array and maps through it if it exists */}
         {posts && posts.map((post, index) => (
           <Items key={index}>
-            {/* tried to get this to work for the background image but an Img can't have children? just made a static image on the Items */}
             <ImageWrapper>
               <StyledImage src={post.photo}
                 layout='fill'
