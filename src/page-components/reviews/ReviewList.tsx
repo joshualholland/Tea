@@ -12,21 +12,22 @@ const ReviewLists: React.FC = () => (
         {posts && posts.map((post, index) => (
           <Items key={index}>
             {/* tried to get this to work for the background image but an Img can't have children? just made a static image on the Items */}
-            {/* <StyledImage src={post.photo}
-              width={800}
-              height={200}
-            >
-              </StyledImage> */}
-            <Title>{post.title}
+            <ImageWrapper>
+              <StyledImage src={post.photo}
+                layout='fill'
+                objectFit='contain'
+              >
+              </StyledImage>
+            </ImageWrapper>
+            <TextWrapper>
+              <Title>{post.title}</Title>
               <Body>
                 {/* slicing the string to 100 characters, maybe we do it with words? */}
-                {post.body.slice(0, 115)} 
+                {post.body.slice(0, 115)}
               </Body>
-            </Title>
-            {/* Button not displaying as intended. Want it under the title. CSS I can come back to.s */}
-            <PrimaryButton />
-            
-            
+              {/* Button not displaying as intended. Want it under the title. CSS I can come back to.s */}
+              <PrimaryButton />
+            </TextWrapper>
           </Items>
         ))}
       </List>
@@ -53,54 +54,46 @@ const Wrapper = styled.section<IProps>`
 `
 
 const ListWrapper = styled.div<IProps>`
-  //box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
   width: 80%;
   margin-top: 1.5em;  
   margin-bottom: 1.5em;  
-  background: ${props => props.theme.palette.common.white};
-  height: auto;
-  border-radius: ${props => props.theme.borderRadius};
 `
 
 const List = styled.ul<IProps>`
-  width: 80%;
-  margin: 1em; 
+  max-width: 1080px;
+  margin: 0 auto; 
   padding: 1em 1em; 
   list-style: none;
 `
 
 const Items = styled.li<IProps>`
   display: flex;
-  width: 80%;
-  height: 160px;
-  flex-flow:row;
-  margin: 5em 1.5em;
-  padding: 2.2em;
+  flex-flow: column;
+  margin: 24px auto;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
   border-radius: ${props => props.theme.borderRadius};
-  background-image:url('https://c4.wallpaperflare.com/wallpaper/684/115/821/420-cannabis-marijuana-weed-wallpaper-preview.jpg');  //wasn't sure how to add this as a backgro
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: top center;
   color: ${props => props.theme.palette.primary.main};
- 
+`
+
+const TextWrapper = styled.div`
+  padding: 24px;
 `
 
 const Title = styled.h3<IProps>`
-  padding: 1em;
-  height: 80px;
-  font-size: 1.5em;
-  background: rgba(0, 0, 0, .8);
-  border-radius: ${props => props.theme.borderRadius};
-  width: 60%; 
-  display: block;
+  font-size: 24px;
   font-family: ${props => props.theme.font.primary};
 `
 
 const Body = styled.p<IProps>`
   font-size: 12px;
-  color: ${props => props.theme.palette.common.white};
+  color: ${props => props.theme.palette.common.black};
   font-family: ${props => props.theme.font.primary};
+`
+
+const ImageWrapper = styled.div`
+  width: 100%;
+  height: 400px;
+  position: relative;
 `
 
 const StyledImage = styled(Image)`
