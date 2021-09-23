@@ -8,26 +8,7 @@ const StrainCard: React.FC = () => (
         <Photo />
         <PrimaryButton />
     </Card>
-    <Card >
-        <Photo />
-        <PrimaryButton />
-    </Card>
-    <Card >
-        <Photo />
-        <PrimaryButton />
-    </Card>
-    <Card >
-        <Photo />
-        <PrimaryButton />
-    </Card>
-    <Card >
-        <Photo />
-        <PrimaryButton />
-    </Card>
-    <Card >
-        <Photo />
-        <PrimaryButton />
-    </Card>
+   
   </Wrapper>
 )
 
