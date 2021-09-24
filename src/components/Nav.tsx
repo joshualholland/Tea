@@ -56,7 +56,7 @@ const Items = styled.div`
 const Logo = styled.div<IProps>`
   font-size: 24px;
   font-family: ${props => props.theme.font.secondary};
-  color: ${props => props.theme.palette.primary.main};
+  color: ${props => props.theme.palette.tertiary.main};
   text-decoration: none;
 `
 
@@ -82,6 +82,6 @@ const Profile = styled.div`
   height: 36px;
   width: 36px;
   border-radius: 50%;
-  background-color: ${props => props.theme.palette.primary.main};
+  background-color: ${props => props.theme.palette.tertiary.main};
 `
 

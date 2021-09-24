@@ -8,15 +8,15 @@ export const defaultTheme: DefaultTheme = {
       white: '#ffffff'
     },
     primary: {
-      main: '#B7FFD8',
+      main: '#40916C',
       contrastText: '#ffffff'
     },
     secondary: {
-      main: '#ffa824',
+      main: '#CC8F3E',
       contrastText: '#ffffff'
     },
     tertiary: {
-      main: '#b084cc',
+      main: '#6D4552',
       contrastText: '#ffffff'
     }
   },
