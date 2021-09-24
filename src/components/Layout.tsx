@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react'
-import Nav from './Nav'
+import Nav from './Nav/Nav'
 
 type Props = {
   children?: ReactNode

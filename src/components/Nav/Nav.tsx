@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { breakpoints } from '../utils/styles/breakpoints'
+import { breakpoints } from '../../utils/styles/breakpoints'
+import Burger from './Burger'
 
 const Nav: React.FC = () => {
   return (
@@ -10,11 +11,12 @@ const Nav: React.FC = () => {
           <Logo>Cannapi</Logo>
           <Right>
             <Link href='/'>Home</Link>
-            <Link>Messages</Link>
+            <Link>Strains</Link>
             <Link>Notifications</Link>
             <Link href='/Profile'><Profile></Profile></Link>
           </Right>
         </Items>
+        <Burger />
       </Inner>
     </Wrapper>
   )
