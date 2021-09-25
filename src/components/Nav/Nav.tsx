@@ -8,10 +8,12 @@ const Nav: React.FC = () => {
     <Wrapper>
       <Inner>
         <Items>
+          <Link href='/'>
           <Logo>Cannapi</Logo>
+          </Link> 
           <Right>
             <Link href='/'>Home</Link>
-            <Link>Strains</Link>
+            <Link href='/strains'>Strains</Link>
             <Link>Notifications</Link>
             <Link href='/Profile'><Profile></Profile></Link>
           </Right>
