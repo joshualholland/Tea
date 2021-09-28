@@ -8,6 +8,7 @@ const Nav: React.FC = () => {
     <Wrapper>
       <Inner>
         <Items>
+          <Burger />
           <Logo>Cannapi</Logo>
           <Right>
             <Link href='/'>Home</Link>
@@ -15,8 +16,8 @@ const Nav: React.FC = () => {
             <Link>Notifications</Link>
             <Link href='/Profile'><Profile></Profile></Link>
           </Right>
+          <MobileProfile href='/Profile'><Profile></Profile></MobileProfile>
         </Items>
-        <Burger />
       </Inner>
     </Wrapper>
   )
@@ -60,6 +61,10 @@ const Logo = styled.div<IProps>`
   font-family: ${props => props.theme.font.secondary};
   color: ${props => props.theme.palette.tertiary.main};
   text-decoration: none;
+
+  ${breakpoints.tablet} {
+    margin: 0;
+  }
 `
 
 const Right = styled.div`
@@ -70,13 +75,18 @@ const Right = styled.div`
 `
 
 const Link = styled.a`
-  margin-left: 24px;
   font-family: ${props => props.theme.font.primary};
   text-decoration: none;
   color: #000000;
+  display: none;
 
   &:first-child() {
     margin-left: 0;
+  }
+
+  ${breakpoints.tablet} {
+    display: block;
+    margin-left: 24px;
   }
 `
 
@@ -85,5 +95,18 @@ const Profile = styled.div`
   width: 36px;
   border-radius: 50%;
   background-color: ${props => props.theme.palette.tertiary.main};
+  margin-left: auto;
+
+  ${breakpoints.tablet} {
+    margin: 0;
+  }
+`
+
+const MobileProfile = styled.a`
+  flex: 1;
+
+  ${breakpoints.tablet} {
+    display: none;
+  }
 `
 
