@@ -9,13 +9,9 @@ const Nav: React.FC = () => {
       <Inner>
         <Items>
           <Burger />
-          <Logo>Cannapi</Logo>
-          <Right>
-            <Link href='/'>Home</Link>
-            <Link>Strains</Link>
-            <Link>Notifications</Link>
-            <Link href='/Profile'><Profile></Profile></Link>
-          </Right>
+          <Link href='/'>
+            <Logo>Cannapi</Logo>
+          </Link>
           <MobileProfile href='/Profile'><Profile></Profile></MobileProfile>
         </Items>
       </Inner>
@@ -53,7 +49,7 @@ const Inner = styled.div`
 const Items = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
+  align-items: center;
 `
 
 const Logo = styled.div<IProps>`
@@ -67,26 +63,11 @@ const Logo = styled.div<IProps>`
   }
 `
 
-const Right = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-left: auto;
-  align-items: center;
-`
-
 const Link = styled.a`
-  font-family: ${props => props.theme.font.primary};
   text-decoration: none;
-  color: #000000;
-  display: none;
 
-  &:first-child() {
-    margin-left: 0;
-  }
-
-  ${breakpoints.tablet} {
-    display: block;
-    margin-left: 24px;
+  @media (min-width: 768px) {
+    order: -1;
   }
 `
 

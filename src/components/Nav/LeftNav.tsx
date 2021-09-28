@@ -1,11 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
+import Link from 'next/link'
 
 const LeftNav: React.FC<LeftProps> = ({ open }) => (
   <List open={open}>
-    <Items>Home</Items>
-    <Items>Strains</Items>
-    <Items>Notifications</Items>
+    <Items href='/'>Home</Items>
+    <Items href='/'>Strains</Items>
+    <Items href='/'>Notifications</Items>
   </List>
 )
 
@@ -13,7 +14,7 @@ interface LeftProps {
   open: boolean
 }
 
-const List = styled.ul<LeftProps>`
+const List = styled.div<LeftProps>`
   list-style: none;
   display: flex;
   flex-flow: row nowrap;
@@ -26,13 +27,13 @@ const List = styled.ul<LeftProps>`
     top: 0;
     right: 0;
     height: 100vh;
-    width: 300px;
+    width: 200px;
     padding-top: 3.5rem;
     transition: transform 0.3s ease-in-out;
   }
 `
 
-const Items = styled.li`
+const Items = styled.a`
   margin-left: 24px;
   font-family: ${props => props.theme.font.primary};
   text-decoration: none;
