@@ -5,7 +5,7 @@ import Link from 'next/link'
 const LeftNav: React.FC<LeftProps> = ({ open }) => (
   <List open={open}>
     <Items href='/'>Home</Items>
-    <Items href='/'>Strains</Items>
+    <Items href='/strains'>Strains</Items>
     <Items href='/'>Notifications</Items>
   </List>
 )

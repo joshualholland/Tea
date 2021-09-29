@@ -12,7 +12,7 @@ const Nav: React.FC = () => {
           <Link href='/'>
             <Logo>Cannapi</Logo>
           </Link>
-          <MobileProfile href='/Profile'><Profile></Profile></MobileProfile>
+          <Profile href='/Profile'><div></div></Profile>
         </Items>
       </Inner>
     </Wrapper>
@@ -50,6 +50,11 @@ const Items = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+
+  @media ${breakpoints.tablet} {
+    width: 100%;
+    justify-content: flex-end;
+  }
 `
 
 const Logo = styled.div<IProps>`
@@ -58,7 +63,7 @@ const Logo = styled.div<IProps>`
   color: ${props => props.theme.palette.tertiary.main};
   text-decoration: none;
 
-  ${breakpoints.tablet} {
+  @media ${breakpoints.tablet} {
     margin: 0;
   }
 `
@@ -66,28 +71,31 @@ const Logo = styled.div<IProps>`
 const Link = styled.a`
   text-decoration: none;
 
-  @media (min-width: 768px) {
+  @media ${breakpoints.tablet} {
     order: -1;
+    margin-right: auto;
   }
 `
 
-const Profile = styled.div`
-  height: 36px;
-  width: 36px;
-  border-radius: 50%;
-  background-color: ${props => props.theme.palette.tertiary.main};
-  margin-left: auto;
-
-  ${breakpoints.tablet} {
-    margin: 0;
+const Profile = styled.a`
+  @media (max-width: 768px) {
+    flex: 1;
   }
-`
 
-const MobileProfile = styled.a`
-  flex: 1;
+  @media ${breakpoints.tablet} {
+    margin-left: 32px;
+  }
 
-  ${breakpoints.tablet} {
-    display: none;
+  div {
+    height: 36px;
+    width: 36px;
+    border-radius: 50%;
+    background-color: ${props => props.theme.palette.tertiary.main};
+    margin-left: auto;
+
+    @media ${breakpoints.tablet} {
+      margin: 0;
+    }
   }
 `
 
