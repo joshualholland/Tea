@@ -2,31 +2,32 @@ import React from 'react'
 import styled from 'styled-components'
 import PrimaryButton from '../../components/PrimaryButton'
 import { strains } from '../../utils/data/straindata'
+import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 
+
+
+type scrollVisibilityApiType = React.ContextType<typeof VisibilityContext>;
 
 const StrainCard: React.FC = () => (
-  <Wrapper>
+  
+    <ScrollMenu>
     {strains && strains.map((strain, index) => (
-          <Card key="index">
-          <StrainInfo>
+      <Card key="index">
             <StrainName>
               {strain.name}
             </StrainName> 
             <StrainType>
               {strain.type}
             </StrainType>
-            <StrainEffects>
+            <StrainEffectsOne>
               {strain.effects[0]}
-            </StrainEffects>
-            <StrainEffects>
+            </StrainEffectsOne>
+            <StrainEffectsTwo>
               {strain.effects[1]}
-            </StrainEffects>
-          </StrainInfo>
+            </StrainEffectsTwo>
       </Card>
         ))}
-   
-   
-  </Wrapper>
+   </ScrollMenu>
 )
 
 interface IProps {
@@ -38,22 +39,42 @@ enum VARIANT {
   SECONDARY
 }
 
+
 export default StrainCard
+
+//some scroll function it wanted 
+function onWheel(apiObj: scrollVisibilityApiType, ev: React.WheelEvent): void {
+  const isThouchpad = Math.abs(ev.deltaX) !== 0 || Math.abs(ev.deltaY) < 15;
+
+  if (isThouchpad) {
+    ev.stopPropagation();
+    return;
+  }
+
+  if (ev.deltaY < 0) {
+    apiObj.scrollNext();
+  } else if (ev.deltaY > 0) {
+    apiObj.scrollPrev();
+  }
+}
+
 
 const Wrapper = styled.section<IProps>`
   width: 100%;
   display: flex;
+  height: auto;
   max-width: 100vw;
   margin: 16px auto;
 `
 
 const Card = styled.div<IProps>`
   background: ${props => props.theme.palette.common.white};
-  border: 1px solid ${props => props.theme.palette.tertiary.main};
-  width: 15%;
-  margin: 10px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-  height: 210px;
+  //border: 1px solid ${props => props.theme.palette.tertiary.main};
+  width: 175px;
+  margin: 10px 20px 20px 20px;
+  padding: 10px;
+  box-shadow: rgba(99, 99, 99, 0.3) 0px 2px 8px 0px;
+  height: 240px;
   border-radius: ${props => props.theme.borderRadius};
 `
 
@@ -63,14 +84,14 @@ const StrainInfo = styled.div<IProps>`
 `
 
 
-const Title = styled.h3<IProps>`
-  font-size: 30px;
+const Title = styled.div<IProps>`
+  font-size: 36px;
   font-family: ${props => props.theme.font.primary};
   margin: 5px;
 `
 
 const StrainName = styled.p<IProps>`
-  font-size: 18px;
+  font-size: 22px;
   padding: .2em .5em;
   color: ${props => props.theme.palette.common.black};
   font-family: ${props => props.theme.font.secondary};
@@ -83,13 +104,24 @@ const StrainType = styled.p<IProps>`
   font-family: ${props => props.theme.font.primary};
 `
 
-const StrainEffects = styled.p<IProps>`
+const StrainEffectsOne = styled.p<IProps>`
   font-size: 16px;
   margin: .5em;
   padding: .2em .5em;
-  border: 2px solid #40916C;
+  background-color: #40916C;
   width: 60%;
-  color: ${props => props.theme.palette.common.black};
+  color: ${props => props.theme.palette.common.white};
+  font-family: ${props => props.theme.font.primary};
+  border-radius: ${props => props.theme.borderRadius};
+`
+
+const StrainEffectsTwo = styled.p<IProps>`
+  font-size: 16px;
+  margin: .5em;
+  padding: .2em .5em;
+  background-color: ${props => props.theme.palette.tertiary.main};
+  width: 60%;
+  color: ${props => props.theme.palette.common.white};
   font-family: ${props => props.theme.font.primary};
   border-radius: ${props => props.theme.borderRadius};
 `
