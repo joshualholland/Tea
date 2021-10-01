@@ -1,51 +1,33 @@
 import React from 'react'
-import Image from 'next/image'
 import styled from 'styled-components'
-import { posts } from '../../utils/data/reviewposts'
-import Posts from '../../components/Posts'
+import Image from 'next/image'
+import PrimaryButton from '../components/PrimaryButton'
 
-const ReviewLists: React.FC = () => (
-  <Wrapper>
-    <ListWrapper>
-      <List>
-        <Posts props={posts} />
-      </List>
-    </ListWrapper>
-  </Wrapper>
+const Posts: React.FC = (props: any) => (
+  <Items>
+    <ImageWrapper>
+      <StyledImage src={props.photo}
+        layout='fill'
+        objectFit='cover'
+      >
+      </StyledImage>
+    </ImageWrapper>
+    <TextWrapper>
+      <Title>{props.title}</Title>
+      <StrainName>{props.strain}</StrainName>
+      <Body>
+        {/* slicing the string to 100 characters, maybe we do it with words? */}
+        {props.body.slice(0, 115)}
+      </Body>
+      {/* Button not displaying as intended. Want it under the title. CSS I can come back to.s */}
+      <PrimaryButton />
+    </TextWrapper>
+  </Items>
 )
 
-interface IProps {
-  variant?: VARIANT
-}
+export default Posts
 
-enum VARIANT {
-  PRIMARY,
-  SECONDARY
-}
-
-export default ReviewLists
-
-const Wrapper = styled.section<IProps>`
-  width: 100%;
-  max-width: 70vw;
-  margin: 16px auto;
-  border-radius: ${props => props.theme.borderRadius};
-`
-
-const ListWrapper = styled.div<IProps>`
-  width: 80%;
-  margin-top: 1.5em;  
-  margin-bottom: 1.5em;  
-`
-
-const List = styled.ul<IProps>`
-  max-width: 1080px;
-  margin: 0 auto; 
-  padding: 1em 3em; 
-  list-style: none;
-`
-
-const Items = styled.li<IProps>`
+const Items = styled.li`
   display: flex;
   flex-flow: column;
   margin: 24px auto;
@@ -59,20 +41,20 @@ const TextWrapper = styled.div`
   padding: 20px 15px;
 `
 
-const Title = styled.h3<IProps>`
+const Title = styled.h3`
   font-size: 30px;
   font-family: ${props => props.theme.font.primary};
   margin: 5px;
 `
 
-const StrainName = styled.p<IProps>`
+const StrainName = styled.p`
   font-size: 16px;
   color: ${props => props.theme.palette.common.black};
   font-family: ${props => props.theme.font.secondary};
 `
 
 
-const Body = styled.p<IProps>`
+const Body = styled.p`
   font-size: 12px;
   color: ${props => props.theme.palette.common.black};
   font-family: ${props => props.theme.font.primary};

@@ -3,7 +3,7 @@ import React from 'react'
 import { NextSeo } from 'next-seo'
 import BackgroundHero from '../page-components/profile/BackgroundHero'
 
-const user: string = 'John Doe'
+const user: string = 'CannapiUser1234'
 
 const Profile: NextPage = () => {
   return (
