@@ -12,6 +12,7 @@ const Posts: React.FC<IPosts> = ({ title, strain, body, photo, user }) => (
       />
     </ImageWrapper>
     <TextWrapper>
+      <User>{user.username}</User>
       <Title>{title}</Title>
       <StrainName>{strain}</StrainName>
       <Body>
@@ -29,10 +30,14 @@ interface IPosts {
   strain: string,
   body: string,
   photo: string,
-  user: object,
+  user: {
+    username: string
+  }
 }
 
 export default Posts
+
+const User = styled.h2``
 
 const Items = styled.li`
   display: flex;

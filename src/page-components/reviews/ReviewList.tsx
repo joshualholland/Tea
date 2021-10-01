@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { posts } from '../../utils/data/reviewposts'
 import Posts from '../../components/Posts'
 
-const ReviewLists: React.FC<IPosts> = () => (
+const ReviewLists: React.FC = () => (
   <Wrapper>
     <ListWrapper>
       <List>
@@ -21,16 +21,6 @@ const ReviewLists: React.FC<IPosts> = () => (
     </ListWrapper>
   </Wrapper>
 )
-
-interface IPosts {
-  post: {
-    title: string,
-    strain: string,
-    body: string,
-    photo: string,
-    user: object,
-  }[]
-}
 
 export default ReviewLists
 
