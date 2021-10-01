@@ -3,27 +3,34 @@ import styled from 'styled-components'
 import Image from 'next/image'
 import PrimaryButton from '../components/PrimaryButton'
 
-const Posts: React.FC = (props: any) => (
+const Posts: React.FC<IPosts> = ({ title, strain, body, photo, user }) => (
   <Items>
     <ImageWrapper>
-      <StyledImage src={props.photo}
+      <StyledImage src={photo}
         layout='fill'
         objectFit='cover'
-      >
-      </StyledImage>
+      />
     </ImageWrapper>
     <TextWrapper>
-      <Title>{props.title}</Title>
-      <StrainName>{props.strain}</StrainName>
+      <Title>{title}</Title>
+      <StrainName>{strain}</StrainName>
       <Body>
         {/* slicing the string to 100 characters, maybe we do it with words? */}
-        {props.body.slice(0, 115)}
+        {body.slice(0, 115)}
       </Body>
       {/* Button not displaying as intended. Want it under the title. CSS I can come back to.s */}
       <PrimaryButton />
     </TextWrapper>
   </Items>
 )
+
+interface IPosts {
+  title: string,
+  strain: string,
+  body: string,
+  photo: string,
+  user: object,
+}
 
 export default Posts
 
