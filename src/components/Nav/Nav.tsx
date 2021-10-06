@@ -36,6 +36,10 @@ const Wrapper = styled.header`
   padding: 1rem;
   display: flex;
   align-items: center;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 `
 
 const Inner = styled.div`
