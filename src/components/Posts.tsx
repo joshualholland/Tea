@@ -5,22 +5,21 @@ import PrimaryButton from '../components/PrimaryButton'
 
 const Posts: React.FC<IPosts> = ({ title, strain, body, photo, user }) => (
   <Items>
+    <UserBanner>{user.username}</UserBanner>
     <ImageWrapper>
-      <StyledImage src={photo}
+      <Image src={photo}
         layout='fill'
         objectFit='cover'
+        alt='post photo'
       />
     </ImageWrapper>
     <TextWrapper>
-      <User>{user.username}</User>
       <Title>{title}</Title>
       <StrainName>{strain}</StrainName>
       <Body>
         {/* slicing the string to 100 characters, maybe we do it with words? */}
         {body.slice(0, 115)}
       </Body>
-      {/* Button not displaying as intended. Want it under the title. CSS I can come back to.s */}
-      <PrimaryButton />
     </TextWrapper>
   </Items>
 )
@@ -37,9 +36,7 @@ interface IPosts {
 
 export default Posts
 
-const User = styled.h2``
-
-const Items = styled.li`
+const Items = styled.div`
   display: flex;
   flex-flow: column;
   margin: 24px auto;
@@ -47,6 +44,17 @@ const Items = styled.li`
   border-radius: ${props => props.theme.borderRadius};
   color: ${props => props.theme.palette.primary.main};
   height: auto;
+`
+
+const UserBanner = styled.div`
+  background-color: ${props => props.theme.palette.primary.main};
+  width: 100%;
+  height: 40px;
+  color: white;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  text-align: center;
+  font-family: ${props => props.theme.font.primary};
 `
 
 const TextWrapper = styled.div`
@@ -76,8 +84,4 @@ const ImageWrapper = styled.div`
   width: 100%;
   height: 300px;
   position: relative;
-`
-
-const StyledImage = styled(Image)`
-  border-radius: 8px 8px 0px 0px;
 `

@@ -4,38 +4,22 @@ import { posts } from '../../utils/data/reviewposts'
 import Posts from '../../components/Posts'
 
 const Recents: React.FC = () => (
-  <Wrapper>
-    <List>
-      <ListWrapper>
-        {posts.map((post, index) => (
-          <Posts
-            title={post.title}
-            strain={post.strain}
-            body={post.body}
-            photo={post.photo}
-            user={post.user}
-            key={index} />
-        ))}
-      </ListWrapper>
-    </List>
-  </Wrapper>
+  <List>
+    {posts.map((post, index) => (
+      <Posts
+        title={post.title}
+        strain={post.strain}
+        body={post.body}
+        photo={post.photo}
+        user={post.user}
+        key={index} />
+    ))}
+  </List>
 )
 
 export default Recents
 
-const Wrapper = styled.section`
-  
-`
-
-const ListWrapper = styled.div`
-  width: 80%;
-  margin-top: 1.5em;  
-  margin-bottom: 1.5em;  
-`
-
-const List = styled.ul`
-  max-width: 1080px;
+const List = styled.div`
+  max-width: 343px;
   margin: 0 auto;
-  list-style: none;
-  padding: 0;
 `

@@ -1,42 +1,42 @@
 import React from 'react'
 import styled from 'styled-components'
 import PrimaryButton from '../../components/PrimaryButton'
-import {strains} from '../../utils/data/straindata'
-import {Swiper, SwiperSlide} from 'swiper/react';
+import { strains } from '../../utils/data/straindata'
+import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
 
-const StrainCard : React.FC = () => (
+const StrainCard: React.FC = () => (
 
-    <Swiper spaceBetween={50} slidesPerView={2}>
-        {strains && strains.map((strain, index) => (
-            <SwiperSlide key="strain">
-                <Card>
-                    <StrainName>
-                        {strain.name}
-                    </StrainName>
-                    <StrainType>
-                        {strain.type}
-                    </StrainType>
-                    <StrainEffectsOne>
-                        {strain.effects[0]}
-                    </StrainEffectsOne>
-                    <StrainEffectsTwo>
-                        {strain.effects[1]}
-                    </StrainEffectsTwo>
-                </Card>
-            </SwiperSlide>
-        ))}
-    </Swiper>
+  <Swiper spaceBetween={64} slidesPerView={3}>
+    {strains && strains.map((strain, index) => (
+      <SwiperSlide key="strain">
+        <Card>
+          <StrainName>
+            {strain.name}
+          </StrainName>
+          <StrainType>
+            {strain.type}
+          </StrainType>
+          <StrainEffectsOne>
+            {strain.effects[0]}
+          </StrainEffectsOne>
+          <StrainEffectsTwo>
+            {strain.effects[1]}
+          </StrainEffectsTwo>
+        </Card>
+      </SwiperSlide>
+    ))}
+  </Swiper>
 )
 
 interface IProps {
-    variant?: VARIANT
+  variant?: VARIANT
 }
 
 enum VARIANT {
-    PRIMARY,
-    SECONDARY
+  PRIMARY,
+  SECONDARY
 }
 
 export default StrainCard

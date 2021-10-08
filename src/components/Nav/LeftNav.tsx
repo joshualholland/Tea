@@ -21,7 +21,7 @@ const List = styled.div<LeftProps>`
 
   @media (max-width: 768px) {
     flex-flow: column nowrap;
-    background-color: ${props => props.theme.palette.tertiary.main};
+    background-color: ${props => props.theme.palette.secondary.main};
     position: fixed;
     transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(100%)'};
     top: 0;

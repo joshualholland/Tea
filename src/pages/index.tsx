@@ -49,4 +49,10 @@ const Line = styled.div<IProps>`
   position: sticky;
   top: 150px;
   transform: translate(-50%, 0);
+  display: none;
+
+  @media ${breakpoints.tablet} {
+    display: block;
+  }
+
 `
