@@ -1,65 +1,47 @@
 import React from 'react'
 import styled from 'styled-components'
 import PrimaryButton from '../../components/PrimaryButton'
-import { strains } from '../../utils/data/straindata'
-import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
+import {strains} from '../../utils/data/straindata'
+import {Swiper, SwiperSlide} from 'swiper/react';
+import 'swiper/css';
 
 
+const StrainCard : React.FC = () => (
 
-type scrollVisibilityApiType = React.ContextType<typeof VisibilityContext>;
-
-const StrainCard: React.FC = () => (
-  
-    <ScrollMenu>
-    {strains && strains.map((strain, index) => (
-      <Card key="index">
-            <StrainName>
-              {strain.name}
-            </StrainName> 
-            <StrainType>
-              {strain.type}
-            </StrainType>
-            <StrainEffectsOne>
-              {strain.effects[0]}
-            </StrainEffectsOne>
-            <StrainEffectsTwo>
-              {strain.effects[1]}
-            </StrainEffectsTwo>
-      </Card>
+    <Swiper spaceBetween={50} slidesPerView={2}>
+        {strains && strains.map((strain, index) => (
+            <SwiperSlide key="strain">
+                <Card>
+                    <StrainName>
+                        {strain.name}
+                    </StrainName>
+                    <StrainType>
+                        {strain.type}
+                    </StrainType>
+                    <StrainEffectsOne>
+                        {strain.effects[0]}
+                    </StrainEffectsOne>
+                    <StrainEffectsTwo>
+                        {strain.effects[1]}
+                    </StrainEffectsTwo>
+                </Card>
+            </SwiperSlide>
         ))}
-   </ScrollMenu>
+    </Swiper>
 )
 
 interface IProps {
-  variant?: VARIANT
+    variant?: VARIANT
 }
 
 enum VARIANT {
-  PRIMARY,
-  SECONDARY
+    PRIMARY,
+    SECONDARY
 }
-
 
 export default StrainCard
 
-//some scroll function it wanted 
-function onWheel(apiObj: scrollVisibilityApiType, ev: React.WheelEvent): void {
-  const isThouchpad = Math.abs(ev.deltaX) !== 0 || Math.abs(ev.deltaY) < 15;
-
-  if (isThouchpad) {
-    ev.stopPropagation();
-    return;
-  }
-
-  if (ev.deltaY < 0) {
-    apiObj.scrollNext();
-  } else if (ev.deltaY > 0) {
-    apiObj.scrollPrev();
-  }
-}
-
-
-const Wrapper = styled.section<IProps>`
+const Wrapper = styled.section < IProps > `
   width: 100%;
   display: flex;
   height: auto;
@@ -67,7 +49,7 @@ const Wrapper = styled.section<IProps>`
   margin: 16px auto;
 `
 
-const Card = styled.div<IProps>`
+const Card = styled.div < IProps > `
   background: ${props => props.theme.palette.common.white};
   //border: 1px solid ${props => props.theme.palette.tertiary.main};
   width: 175px;
@@ -78,33 +60,32 @@ const Card = styled.div<IProps>`
   border-radius: ${props => props.theme.borderRadius};
 `
 
-const StrainInfo = styled.div<IProps>`
+const StrainInfo = styled.div < IProps > `
   width: 100%;
   height: 145px;
 `
 
-
-const Title = styled.div<IProps>`
+const Title = styled.div < IProps > `
   font-size: 36px;
   font-family: ${props => props.theme.font.primary};
   margin: 5px;
 `
 
-const StrainName = styled.p<IProps>`
+const StrainName = styled.p < IProps > `
   font-size: 22px;
   padding: .2em .5em;
   color: ${props => props.theme.palette.common.black};
   font-family: ${props => props.theme.font.secondary};
 `
 
-const StrainType = styled.p<IProps>`
+const StrainType = styled.p < IProps > `
   font-size: 16px;
   padding: .2em .5em;
   color: ${props => props.theme.palette.common.black};
   font-family: ${props => props.theme.font.primary};
 `
 
-const StrainEffectsOne = styled.p<IProps>`
+const StrainEffectsOne = styled.p < IProps > `
   font-size: 16px;
   margin: .5em;
   padding: .2em .5em;
@@ -115,7 +96,7 @@ const StrainEffectsOne = styled.p<IProps>`
   border-radius: ${props => props.theme.borderRadius};
 `
 
-const StrainEffectsTwo = styled.p<IProps>`
+const StrainEffectsTwo = styled.p < IProps > `
   font-size: 16px;
   margin: .5em;
   padding: .2em .5em;
