@@ -16,7 +16,7 @@ export const defaultTheme: DefaultTheme = {
       contrastText: '#ffffff'
     },
     tertiary: {
-      main: '#6D4552',
+      main: '#581845',
       contrastText: '#ffffff'
     }
   },

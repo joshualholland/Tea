@@ -32,7 +32,7 @@ enum VARIANT {
 }
 
 const Wrapper = styled.section`
-  padding: 0 64px;
+  padding: 0 16px;
 
   @media ${breakpoints.tablet} {
     display: flex;

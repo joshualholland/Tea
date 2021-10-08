@@ -35,7 +35,7 @@ const ListWrapper = styled.div`
 
 const List = styled.ul`
   max-width: 1080px;
-  margin: 0 auto; 
-  padding: 1em 3em; 
+  margin: 0 auto;
   list-style: none;
+  padding: 0;
 `
