@@ -8,19 +8,7 @@ import { breakpoints } from '../../utils/styles/breakpoints'
 const StrainDisplay: React.FC = () => (
   <Wrapper>
     <ListWrapper>
-    <Title>Hybrids</Title>
-        <StrainCard />
-    </ListWrapper>
-    <ListWrapper>
-    <Title>Calming Strains</Title>
-        <StrainCard />
-    </ListWrapper>
-    <ListWrapper>
-    <Title>Hybrids</Title>
-        <StrainCard />
-    </ListWrapper>
-    <ListWrapper>
-    <Title>Calming Strains</Title>
+      <Title>Hybrids</Title>
         <StrainCard />
     </ListWrapper>
   </Wrapper>
@@ -44,7 +32,7 @@ const Wrapper = styled.section<IProps>`
   border-radius: ${props => props.theme.borderRadius};
 
   @media ${breakpoints.tablet} {
-      margin: 0;
+      margin: 16px auto;
       max-width: 70vw;
     }
 `
