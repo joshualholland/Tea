@@ -14,7 +14,6 @@ const Home: NextPage = () => {
       />
       <Wrapper>
         <Recents />
-        <Line />
       </Wrapper>
     </>
   )
@@ -33,26 +32,4 @@ enum VARIANT {
 
 const Wrapper = styled.section`
   padding: 0 16px;
-
-  @media ${breakpoints.tablet} {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-`
-
-const Line = styled.div<IProps>`
-  width: 2px;
-  height: 70vh;
-  background-color: #6D4552;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 150px;
-  transform: translate(-50%, 0);
-  display: none;
-
-  @media ${breakpoints.tablet} {
-    display: block;
-  }
-
 `

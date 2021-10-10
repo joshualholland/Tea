@@ -5,7 +5,10 @@ import PrimaryButton from '../components/PrimaryButton'
 
 const Posts: React.FC<IPosts> = ({ title, strain, body, photo, user }) => (
   <Items>
-    <UserBanner>{user.username}</UserBanner>
+    <UserBanner>
+      <Username>{user.username}</Username>
+      <ProfilePhoto></ProfilePhoto>
+    </UserBanner>
     <ImageWrapper>
       <Image src={photo}
         layout='fill'
@@ -53,8 +56,26 @@ const UserBanner = styled.div`
   color: white;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-  text-align: center;
-  font-family: ${props => props.theme.font.primary};
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`
+
+const Username = styled.p`
+  font-family: ${props => props.theme.font.secondary};
+  font-weight: 300;
+  line-height: 1.2;
+  margin-left: 16px;
+`
+
+const ProfilePhoto = styled.div`
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: ${props => props.theme.palette.secondary.main};
+  border: 1px solid white;
+  margin-right: 16px;
 `
 
 const TextWrapper = styled.div`
