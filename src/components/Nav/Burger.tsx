@@ -1,25 +1,43 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { breakpoints } from '../../utils/styles/breakpoints'
 import LeftNav from './LeftNav'
 
 const Burger: React.FC<BurgerProps> = () => {
-  const [open, setOpen] = useState(false)
+  const [showLeftNav, setShowLeftNav] = useState(false)
+  const leftNav = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!showLeftNav) return;
+    function handleClick(event: any) {
+      if (leftNav.current && !leftNav.current.contains(event.target)) {
+        setShowLeftNav(false)
+      }
+    }
+
+    window.addEventListener("click", handleClick)
+    return () => window.removeEventListener("click", handleClick);
+  }, [showLeftNav])
 
   return (
     <>
-      <StyledBurger open={open} onClick={() => setOpen(!open)}>
+      <StyledBurger onClick={() => setShowLeftNav(!showLeftNav)}>
         <div />
         <div />
         <div />
       </StyledBurger >
-      <LeftNav open={open} />
+      {showLeftNav &&
+        <div ref={leftNav}>
+          <LeftNav />
+        </div>
+      }
+
     </>
   )
 }
 
 interface BurgerProps {
-  open?: boolean;
+  showLeftNav?: boolean;
 }
 
 const StyledBurger = styled.div<BurgerProps>`
@@ -37,19 +55,19 @@ const StyledBurger = styled.div<BurgerProps>`
   div {
     width: 2rem;
     height: 0.25rem;
-    background-color: ${({ open }) => open ? '#ccc' : '#333'};
+    background-color: ${({ showLeftNav }) => showLeftNav ? '#ccc' : '#333'};
     border-radius: 10px;
     transform-origin: 1px;
     transition: all 0.3s linear;
     &:nth-child(1) {
-      transform: ${({ open }) => open ? 'rotate(45deg)' : 'rotate(0)'};
+      transform: ${({ showLeftNav }) => showLeftNav ? 'rotate(45deg)' : 'rotate(0)'};
     }
     &:nth-child(2) {
-      transform: ${({ open }) => open ? 'translateX(100%)' : 'translateX(0)'};
-      opacity: ${({ open }) => open ? 0 : 1};
+      transform: ${({ showLeftNav }) => showLeftNav ? 'translateX(100%)' : 'translateX(0)'};
+      opacity: ${({ showLeftNav }) => showLeftNav ? 0 : 1};
     }
     &:nth-child(3) {
-      transform: ${({ open }) => open ? 'rotate(-45deg)' : 'rotate(0)'};
+      transform: ${({ showLeftNav }) => showLeftNav ? 'rotate(-45deg)' : 'rotate(0)'};
     }
   }
 `
