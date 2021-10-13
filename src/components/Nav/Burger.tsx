@@ -21,7 +21,7 @@ const Burger: React.FC<BurgerProps> = () => {
 
   return (
     <>
-      <StyledBurger onClick={() => setShowLeftNav(!showLeftNav)}>
+      <StyledBurger showLeftNav={showLeftNav} onClick={() => setShowLeftNav(!showLeftNav)}>
         <div />
         <div />
         <div />
