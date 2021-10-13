@@ -12,7 +12,7 @@ const Nav: React.FC = () => {
           <Link href='/'>
             <Logo>Cannapi</Logo>
           </Link>
-          <Profile href='/Profile'><div></div></Profile>
+          <Profile href='/profile'><div></div></Profile>
         </Items>
       </Inner>
     </Wrapper>
