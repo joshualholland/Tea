@@ -2,6 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import styled from 'styled-components'
 import StrainCard from './StrainCard'
+import StrainSkeleton from './StrainSkeleton'
 import {strains} from '../../utils/data/straindata'
 import PrimaryButton from '../../components/PrimaryButton'
 import {breakpoints} from '../../utils/styles/breakpoints'
@@ -11,14 +12,15 @@ import 'swiper/css';
 const StrainDisplay : React.FC = () => (
    
         <ListWrapper>
-            {strains && strains.map((strain, index) => (
+          {strains && strains.map((strain, index) => (
             <StrainCard
                 name={strain.name}
                 type={strain.type}
                 body={strain.body}
                 photo={strain.photo}
                 effects={strain.effects}
-                key={index}/>))}
+                key={strain.name}/>))}
+          <StrainSkeleton />
         </ListWrapper>
   
 )
@@ -52,6 +54,7 @@ const ListWrapper = styled.div < IProps > `
   margin-bottom: 1em;  
   background: ${props => props.theme.palette.common.white};
   height: 400px;
+  z-index: 1;
   border-radius: ${props => props.theme.borderRadius};
 `
 
