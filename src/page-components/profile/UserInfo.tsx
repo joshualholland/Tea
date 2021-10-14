@@ -7,6 +7,9 @@ const UserInfo: React.FC = () => (
       <UserName>CannapiUser1234</UserName>
       <UserFlair>Globetrotter</UserFlair>
     </Container>
+    <Buttons>
+      <FollowButton>Follow</FollowButton>
+    </Buttons>
     <Stats>
     </Stats>
   </Wrapper>
@@ -36,6 +39,21 @@ const UserFlair = styled.p`
   font-size: 16px;
   text-align: center;
   color: #5c5c5c;
+`
+
+const Buttons = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+`
+
+const FollowButton = styled.button`
+  max-width: 200px;
+  padding: 8px 24px;
+  color: ${props => props.theme.palette.common.white};
+  border-radius: ${props => props.theme.borderRadius};
+  background-color: ${props => props.theme.palette.tertiary.main};
+  border: 2px solid ${props => props.theme.palette.tertiary.main};
 `
 
 const Stats = styled.div`
