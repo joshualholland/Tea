@@ -1,28 +1,30 @@
 import React from 'react'
 import styled from 'styled-components'
+import Image from 'next/image'
 import PrimaryButton from '../../components/PrimaryButton'
 import { strains } from '../../utils/data/straindata'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
 
-const StrainCard: React.FC = () => (
-
-  <Swiper spaceBetween={64} slidesPerView={3}>
+const StrainCard: React.FC<IPosts> = ({ name, type, effects, body, photo }) => (
+  
+  <Swiper spaceBetween={64} slidesPerView={2.4}>
     {strains && strains.map((strain, index) => (
-      <SwiperSlide key="strain">
+      <SwiperSlide key="index">
         <Card>
           <StrainName>
-            {strain.name}
+            {name}
           </StrainName>
+        {/* small png image will go here  */}
           <StrainType>
-            {strain.type}
+            {type}
           </StrainType>
           <StrainEffectsOne>
-            {strain.effects[0]}
+            {effects.effectOne}
           </StrainEffectsOne>
           <StrainEffectsTwo>
-            {strain.effects[1]}
+            {effects.effectTwo}
           </StrainEffectsTwo>
         </Card>
       </SwiperSlide>
@@ -30,8 +32,15 @@ const StrainCard: React.FC = () => (
   </Swiper>
 )
 
-interface IProps {
-  variant?: VARIANT
+interface IPosts {
+  name: string,
+  type: string,
+  effects: { 
+    effectOne: string, 
+    effectTwo: string  
+  },
+  body: string,
+  photo: string,
 }
 
 enum VARIANT {
@@ -41,7 +50,7 @@ enum VARIANT {
 
 export default StrainCard
 
-const Wrapper = styled.section < IProps > `
+const Wrapper = styled.section`
   width: 100%;
   display: flex;
   height: auto;
@@ -49,7 +58,7 @@ const Wrapper = styled.section < IProps > `
   margin: 16px auto;
 `
 
-const Card = styled.div < IProps > `
+const Card = styled.div`
   background: ${props => props.theme.palette.common.white};
   //border: 1px solid ${props => props.theme.palette.tertiary.main};
   width: 175px;
@@ -59,33 +68,38 @@ const Card = styled.div < IProps > `
   height: 240px;
   border-radius: ${props => props.theme.borderRadius};
 `
+const ImageWrapper = styled.div`
+  width: 100%;
+  height: 30px;
+  position: relative;
+`
 
-const StrainInfo = styled.div < IProps > `
+const StrainInfo = styled.div`
   width: 100%;
   height: 145px;
 `
 
-const Title = styled.div < IProps > `
+const Title = styled.div`
   font-size: 36px;
   font-family: ${props => props.theme.font.primary};
   margin: 5px;
 `
 
-const StrainName = styled.p < IProps > `
+const StrainName = styled.p`
   font-size: 22px;
   padding: .2em .5em;
   color: ${props => props.theme.palette.common.black};
   font-family: ${props => props.theme.font.secondary};
 `
 
-const StrainType = styled.p < IProps > `
+const StrainType = styled.p`
   font-size: 16px;
-  padding: .2em .5em;
+  padding: 0em .5em;
   color: ${props => props.theme.palette.common.black};
   font-family: ${props => props.theme.font.primary};
 `
 
-const StrainEffectsOne = styled.p < IProps > `
+const StrainEffectsOne = styled.p`
   font-size: 16px;
   margin: .5em;
   padding: .2em .5em;
@@ -96,7 +110,7 @@ const StrainEffectsOne = styled.p < IProps > `
   border-radius: ${props => props.theme.borderRadius};
 `
 
-const StrainEffectsTwo = styled.p < IProps > `
+const StrainEffectsTwo = styled.p`
   font-size: 16px;
   margin: .5em;
   padding: .2em .5em;
