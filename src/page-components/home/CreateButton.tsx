@@ -4,8 +4,9 @@ import styled from 'styled-components'
 const CreateButton: React.FC = () => (
   <Wrapper>
     <Container>
-      <Button></Button>
       <Text>Start a review</Text>
+      <Button>
+      </Button>
     </Container>
   </Wrapper>
 )
@@ -20,8 +21,8 @@ const Wrapper = styled.div`
 
 const Container = styled.div`
   height: 40px;
-  background-color: ${props => props.theme.palette.primary.main};
-  border-radius: ${props => props.theme.borderRadius};
+  border-bottom: 2px solid;
+  border-color: ${props => props.theme.palette.primary.main};
   display: flex;
   align-items: center;
 `
@@ -29,9 +30,14 @@ const Container = styled.div`
 const Text = styled.h1`
   font-size: 16px;
   font-family: ${props => props.theme.font.primary};
-  color: white;
+  color: ${props => props.theme.palette.primary.main};
 `
 
 const Button = styled.div`
+  height: 18px;
+  margin-left: 55%;
+  width: 18px;
+  background-color: ${props => props.theme.palette.primary.main};
+  border-radius: 60%;
   
 `

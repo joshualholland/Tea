@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
-import PrimaryButton from '../components/PrimaryButton'
+import PrimaryButton from './Buttons/PrimaryButton'
 
 const Posts: React.FC<IPosts> = ({ title, strain, body, photo, user }) => (
   <Items>

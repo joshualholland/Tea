@@ -1,13 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-import { breakpoints } from '../utils/styles/breakpoints'
+import { breakpoints } from '../../utils/styles/breakpoints'
 
 const PrimaryButton: React.FC = () => {
   return (
     <Wrapper>
-         <Button>
-          Full Review
-        </Button>
+      <Button>
+      </Button>
     </Wrapper>
   )
 }
@@ -33,7 +32,7 @@ const Button = styled.button<IProps>`
   font-family: ${props => props.theme.font.primary};
   cursor: pointer;
   padding: .8em 1em;
-  background-color:${props =>  props.theme.palette.secondary.main};
+  background-color:${props => props.theme.palette.secondary.main};
   color: #fff;
   //box-shadow: 0 4px 15px 0 rgba(23, 168, 108, 0.75);
   border: none;

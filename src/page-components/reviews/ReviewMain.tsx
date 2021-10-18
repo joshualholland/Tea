@@ -2,32 +2,32 @@ import React from 'react'
 import Image from 'next/image'
 import styled from 'styled-components'
 import { posts } from '../../utils/data/reviewposts'
-import PrimaryButton from '../../components/PrimaryButton'
+import PrimaryButton from '../../components/Buttons/PrimaryButton'
 
 
-let post = posts[0]; {/*getting first post from reviews*/}
+let post = posts[0]; {/*getting first post from reviews*/ }
 
 const ReviewMain: React.FC = () => (
   <Wrapper>
-     <ImageWrapper>
-              <StyledImage src={post.photo}
-                layout='fill'
-                objectFit='cover'
-              >
-              </StyledImage>
-            </ImageWrapper>
-            <TextWrapper>
-              <Title>{post.title}</Title>
-              <StrainName>{post.strain}</StrainName>
-              <Body>
-                {/* slicing the string to 100 characters, maybe we do it with words? */}
-                {post.body}
-              </Body>
-              {/* Button not displaying as intended. Want it under the title. CSS I can come back to.s */}
-              <PrimaryButton>
-                  More Reviews 
-              </PrimaryButton>
-            </TextWrapper>
+    <ImageWrapper>
+      <StyledImage src={post.photo}
+        layout='fill'
+        objectFit='cover'
+      >
+      </StyledImage>
+    </ImageWrapper>
+    <TextWrapper>
+      <Title>{post.title}</Title>
+      <StrainName>{post.strain}</StrainName>
+      <Body>
+        {/* slicing the string to 100 characters, maybe we do it with words? */}
+        {post.body}
+      </Body>
+      {/* Button not displaying as intended. Want it under the title. CSS I can come back to.s */}
+      <PrimaryButton>
+        More Reviews
+      </PrimaryButton>
+    </TextWrapper>
   </Wrapper>
 )
 

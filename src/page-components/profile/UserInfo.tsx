@@ -1,15 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
+import FollowIcon from '../../components/Icons/FollowIcon'
 
 const UserInfo: React.FC = () => (
   <Wrapper>
     <Container>
-      <UserName>CannapiUser1234</UserName>
+      <FollowUser>
+        <UserName>CannapiUser1234</UserName>
+        <div>
+          <FollowIcon />
+        </div>
+      </FollowUser>
       <UserFlair>Globetrotter</UserFlair>
     </Container>
-    <Buttons>
-      <FollowButton>Follow</FollowButton>
-    </Buttons>
     <Stats>
     </Stats>
   </Wrapper>
@@ -26,12 +29,20 @@ const Container = styled.div`
   flex-direction: column;
 `
 
+const FollowUser = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0 auto;
+`
+
 const UserName = styled.h1`
   font-family: ${props => props.theme.font.primary};
   font-size: 28px;
   color: ${props => props.theme.palette.tertiary.main};
   text-align: center;
   margin: 0;
+  padding-right: 8px;
 `
 
 const UserFlair = styled.p`
@@ -39,21 +50,6 @@ const UserFlair = styled.p`
   font-size: 16px;
   text-align: center;
   color: #5c5c5c;
-`
-
-const Buttons = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin: 0 auto;
-`
-
-const FollowButton = styled.button`
-  max-width: 200px;
-  padding: 8px 24px;
-  color: ${props => props.theme.palette.common.white};
-  border-radius: ${props => props.theme.borderRadius};
-  background-color: ${props => props.theme.palette.tertiary.main};
-  border: 2px solid ${props => props.theme.palette.tertiary.main};
 `
 
 const Stats = styled.div`
