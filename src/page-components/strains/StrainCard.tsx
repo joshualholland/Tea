@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
+import Link from 'next/link'
 import PrimaryButton from '../../components/Buttons/PrimaryButton'
 import { strains } from '../../utils/data/straindata'
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -8,32 +9,36 @@ import 'swiper/css';
 
 
 const StrainCard: React.FC<IPosts> = ({ name, type, effects, body, photo }) => (
-
+<Wrapper>
+  <Title>{type}</Title>
   <SwiperZ spaceBetween={64} slidesPerView={2.4}>
     {strains && strains.map((strain, index) => (
       <SwiperSlide key="index">
-        <Card>
-          <StrainName>
-            {name}
-          </StrainName>
-          <StrainImage
-            src={photo}
-            width={30}
-            height={30}
-          />
-          <StrainType>
-            {type}
-          </StrainType>
-          <StrainEffectsOne>
-            {effects.effectOne}
-          </StrainEffectsOne>
-          <StrainEffectsTwo>
-            {effects.effectTwo}
-          </StrainEffectsTwo>
-        </Card>
+        <StrainLink href='/'>
+          <Card>
+            <StrainName>
+              {name}
+            </StrainName>
+            <StrainImage
+              src={photo}
+              width={50}
+              height={50}
+            />
+            <StrainType>
+              {type}
+            </StrainType>
+            <StrainEffectsOne>
+              {effects.effectOne}
+            </StrainEffectsOne>
+            <StrainEffectsTwo>
+              {effects.effectTwo}
+            </StrainEffectsTwo>
+          </Card>
+        </StrainLink>
       </SwiperSlide>
     ))}
   </SwiperZ>
+</Wrapper>
 )
 
 interface IPosts {
@@ -55,11 +60,7 @@ enum VARIANT {
 export default StrainCard
 
 const Wrapper = styled.section`
-  width: 100%;
-  display: flex;
-  height: auto;
-  max-width: 100vw;
-  margin: 16px auto;
+ 
 `
 
 const SwiperZ = styled(Swiper)`
@@ -73,13 +74,17 @@ const Card = styled.div`
   margin: 10px 20px 20px 20px;
   padding: 5px 10px;
   box-shadow: rgba(99, 99, 99, 0.3) 0px 2px 8px 0px;
-  height: 240px;
+  height: 260px;
   border-radius: ${props => props.theme.borderRadius};
 `
 const StrainImage = styled(Image)`
-  height: 30px;
+  height: 50px;
   margin-left: 20px;
   position: relative;
+`
+
+const StrainLink = styled(Link)`
+  cursor: pointer;
 `
 
 const StrainInfo = styled.div`
@@ -87,10 +92,10 @@ const StrainInfo = styled.div`
   height: 145px;
 `
 
-const Title = styled.div`
-  font-size: 16px;
+const Title = styled.h2`
+  font-size: 18px;
   font-family: ${props => props.theme.font.primary};
-  margin: 5px;
+  margin: 20px;
 `
 
 const StrainName = styled.p`

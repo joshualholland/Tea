@@ -2,7 +2,6 @@ import React from 'react'
 import Image from 'next/image'
 import styled from 'styled-components'
 import StrainCard from './StrainCard'
-import StrainCategoryBox from './StrainCategoryBox'
 import StrainSkeleton from './StrainSkeleton'
 import { strains } from '../../utils/data/straindata'
 import PrimaryButton from '../../components/Buttons/PrimaryButton'
@@ -10,45 +9,37 @@ import { breakpoints } from '../../utils/styles/breakpoints'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
-const StrainDisplay: React.FC<IPosts> = ({ name, type, effects, body, photo }) => (
-  <ListWrapper>
-    <StrainCategoryBox 
-    type={strains[0].type}
-    name={strains[0].name}
-    body={strains[0].body}
-    photo={strains[0].photo}
-    effects={strains[0].effects}
-    />
-    {strains && strains.map((strain, index) => (
-      <StrainCard
-        name={strain.name}
-        type={strain.type}
-        body={strain.body}
-        photo={strain.photo}
-        effects={strain.effects}
-        key={strain.name} />
-        ))}
-    <StrainSkeleton />
-  </ListWrapper>
+const StrainCategoryBox: React.FC<IPosts> = ({ name, type, effects, body, photo }) => (
+  <Wrapper>
+    <Categories>
+        <Title>Words About Something</Title>
+        <StrainImage
+              src={photo}
+              width={600}
+              height={300}
+        />
+    </Categories>
+  </Wrapper>
 )
 
+
 interface IPosts {
-  name: string,
-  type: string,
-  effects: {
-    effectOne: string,
-    effectTwo: string
-  },
-  body: string,
-  photo: string,
-}
+    name: string,
+    type: string,
+    effects: {
+      effectOne: string,
+      effectTwo: string
+    },
+    body: string,
+    photo: string,
+  }
 
 enum VARIANT {
   PRIMARY,
   SECONDARY
 }
 
-export default StrainDisplay
+export default StrainCategoryBox
 
 const Wrapper = styled.section`
   width: 100%;
@@ -72,11 +63,27 @@ const ListWrapper = styled.div`
   border-radius: ${props => props.theme.borderRadius};
 `
 
+const StrainImage = styled(Image)`
+  height: 30px;
+  margin-left: 20px;
+`
+
 const Title = styled.h3`
   margin: .5em 1em;  
   font-size: 20px;
   font-family: ${props => props.theme.font.primary};
-  display: block;
+  display: flex;
+`
+
+const Categories = styled.div`
+  background-color: ${props => props.theme.palette.tertiary.main};
+  //border: 1px solid ${props => props.theme.palette.tertiary.main};
+  width: 90%;
+  margin: 10px 20px 20px 20px;
+  padding: 5px 10px;
+  box-shadow: rgba(99, 99, 99, 0.3) 0px 2px 8px 0px;
+  height: 260px;
+  border-radius: ${props => props.theme.borderRadius};
 `
 
 const Body = styled.p`
