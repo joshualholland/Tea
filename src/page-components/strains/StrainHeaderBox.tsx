@@ -9,16 +9,16 @@ import { breakpoints } from '../../utils/styles/breakpoints'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
-const StrainCategoryBox: React.FC<IPosts> = ({ name, type, effects, body, photo }) => (
+const StrainHeaderBox: React.FC<IPosts> = ({ name, type, effects, body, photo }) => (
   <Wrapper>
-    <Categories>
-        <Title>Words About Something</Title>
+    <HeroBox>
+        <Title>Local Oregon Dispensary</Title>
         <StrainImage
               src={photo}
-              width={600}
-              height={300}
+              width={500}
+              height={250}
         />
-    </Categories>
+    </HeroBox>
   </Wrapper>
 )
 
@@ -39,7 +39,7 @@ enum VARIANT {
   SECONDARY
 }
 
-export default StrainCategoryBox
+export default StrainHeaderBox
 
 const Wrapper = styled.section`
   width: 100%;
@@ -64,25 +64,28 @@ const ListWrapper = styled.div`
 `
 
 const StrainImage = styled(Image)`
-  height: 30px;
-  margin-left: 20px;
+  position: absolute;
+  z-index: 0;
 `
 
 const Title = styled.h3`
   margin: .5em 1em;  
-  font-size: 20px;
+  font-size: 25px;
   font-family: ${props => props.theme.font.primary};
   display: flex;
+  position: absolute;
+  z-index: 0;
+  color: ${props => props.theme.palette.common.white};
 `
 
-const Categories = styled.div`
+const HeroBox = styled.div`
   background-color: ${props => props.theme.palette.tertiary.main};
   //border: 1px solid ${props => props.theme.palette.tertiary.main};
   width: 90%;
   margin: 10px 20px 20px 20px;
   padding: 5px 10px;
   box-shadow: rgba(99, 99, 99, 0.3) 0px 2px 8px 0px;
-  height: 260px;
+  height: 280px;
   border-radius: ${props => props.theme.borderRadius};
 `
 

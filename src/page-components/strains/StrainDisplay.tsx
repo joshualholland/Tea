@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import styled from 'styled-components'
 import StrainCard from './StrainCard'
-import StrainCategoryBox from './StrainCategoryBox'
+import StrainHeaderBox from './StrainHeaderBox'
 import StrainSkeleton from './StrainSkeleton'
 import { strains } from '../../utils/data/straindata'
 import PrimaryButton from '../../components/Buttons/PrimaryButton'
@@ -12,13 +12,18 @@ import 'swiper/css';
 
 const StrainDisplay: React.FC<IPosts> = ({ name, type, effects, body, photo }) => (
   <ListWrapper>
-    <StrainCategoryBox 
+    <StrainHeaderBox 
     type={strains[0].type}
     name={strains[0].name}
     body={strains[0].body}
     photo={strains[0].photo}
     effects={strains[0].effects}
     />
+    <FilterWrapper>
+      <FilterTitle>Hybrid</FilterTitle>
+      <FilterTitle>Indica</FilterTitle>
+      <FilterTitle>Sativa</FilterTitle>
+    </FilterWrapper>
     {strains && strains.map((strain, index) => (
       <StrainCard
         name={strain.name}
@@ -72,11 +77,33 @@ const ListWrapper = styled.div`
   border-radius: ${props => props.theme.borderRadius};
 `
 
-const Title = styled.h3`
-  margin: .5em 1em;  
+const FilterWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+`  
+
+const FilterTitle = styled.h3`
+  margin: 1em 1em;  
   font-size: 20px;
+  padding: .25em 1.2em;
+  color: ${props => props.theme.palette.common.white};
+  border-radius: ${props => props.theme.borderRadius};
+  background-color: ${props => props.theme.palette.secondary.main};
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
   font-family: ${props => props.theme.font.primary};
-  display: block;
+
+  :nth-child(2) {
+    background-color: ${props => props.theme.palette.tertiary.main};
+  }
+
+  :nth-child(3) {
+    background-color: ${props => props.theme.palette.primary.main};
+  }
+
+
+  
+
 `
 
 const Body = styled.p`

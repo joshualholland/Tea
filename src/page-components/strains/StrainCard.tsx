@@ -10,7 +10,6 @@ import 'swiper/css';
 
 const StrainCard: React.FC<IPosts> = ({ name, type, effects, body, photo }) => (
 <Wrapper>
-  <Title>{type}</Title>
   <SwiperZ spaceBetween={64} slidesPerView={2.4}>
     {strains && strains.map((strain, index) => (
       <SwiperSlide key="index">
