@@ -7,18 +7,39 @@ import { strains } from '../../utils/data/straindata'
 import PrimaryButton from '../../components/Buttons/PrimaryButton'
 import { breakpoints } from '../../utils/styles/breakpoints'
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination } from 'swiper';
 import 'swiper/css';
+import 'swiper/css/pagination';
 
 const StrainHeaderBox: React.FC<IPosts> = ({ name, type, effects, body, photo }) => (
   <Wrapper>
-    <HeroBox>
-        <Title>Local Oregon Dispensary</Title>
-        <StrainImage
-              src={photo}
-              width={500}
-              height={250}
-        />
-    </HeroBox>
+    <SwiperZ
+      modules={[Pagination]}
+      pagination={{ clickable: true }}
+      spaceBetween={50}
+      slidesPerView={1}
+    >
+      <SwiperSlide>
+          <HeroBox>
+            <Title>Hybrid Deals</Title>
+            <StrainImage
+                  src={photo}
+                  width={300}
+                  height={150}
+            />
+          </HeroBox>
+        </SwiperSlide>
+        <SwiperSlide>
+          <HeroBoxTwo>
+            <Title>Indica Dispensary</Title>
+            <StrainImage
+                  src={photo}
+                  width={500}
+                  height={250}
+            />
+          </HeroBoxTwo>
+      </SwiperSlide>
+    </SwiperZ>
   </Wrapper>
 )
 
@@ -52,34 +73,37 @@ const Wrapper = styled.section`
       max-width: 70vw;
     }
 `
-
-const ListWrapper = styled.div`
-  //box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-  margin-top: 1em;  
-  margin-bottom: 1em;  
-  background: ${props => props.theme.palette.common.white};
-  height: 400px;
-  z-index: 1;
-  border-radius: ${props => props.theme.borderRadius};
+const SwiperZ = styled(Swiper)`
+  z-index: 0;
 `
 
 const StrainImage = styled(Image)`
   position: absolute;
   z-index: 0;
+  box-shadow: rgba(99, 99, 99, 0.3) 0px 2px 8px 0px;
 `
 
 const Title = styled.h3`
   margin: .5em 1em;  
   font-size: 25px;
   font-family: ${props => props.theme.font.primary};
-  display: flex;
-  position: absolute;
   z-index: 0;
   color: ${props => props.theme.palette.common.white};
 `
 
 const HeroBox = styled.div`
-  background-color: ${props => props.theme.palette.tertiary.main};
+  background:  linear-gradient(0deg, rgba(64,145,108,1) 0%, rgba(253,187,45,1) 100%);
+  //border: 1px solid ${props => props.theme.palette.tertiary.main};
+  width: 90%;
+  margin: 10px 20px 20px 20px;
+  padding: 5px 10px;
+  box-shadow: rgba(99, 99, 99, 0.3) 0px 2px 8px 0px;
+  height: 280px;
+  border-radius: ${props => props.theme.borderRadius};
+`
+
+const HeroBoxTwo = styled.div`
+  background:  linear-gradient(0deg, rgba(64,145,108,1) 0%, rgba(150,107,157,1) 100%);
   //border: 1px solid ${props => props.theme.palette.tertiary.main};
   width: 90%;
   margin: 10px 20px 20px 20px;

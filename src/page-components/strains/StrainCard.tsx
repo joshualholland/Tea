@@ -9,35 +9,36 @@ import 'swiper/css';
 
 
 const StrainCard: React.FC<IPosts> = ({ name, type, effects, body, photo }) => (
-<Wrapper>
+
   <SwiperZ spaceBetween={64} slidesPerView={2.4}>
     {strains && strains.map((strain, index) => (
       <SwiperSlide key="index">
         <StrainLink href='/'>
-          <Card>
+          <Card>      
             <StrainName>
               {name}
             </StrainName>
-            <StrainImage
-              src={photo}
-              width={50}
-              height={50}
-            />
             <StrainType>
               {type}
             </StrainType>
-            <StrainEffectsOne>
-              {effects.effectOne}
-            </StrainEffectsOne>
-            <StrainEffectsTwo>
-              {effects.effectTwo}
-            </StrainEffectsTwo>
+            <HorizonalSection>
+              <StrainEffectsOne>
+                {effects.effectOne}
+              </StrainEffectsOne>
+              <StrainEffectsTwo>
+                {effects.effectTwo}
+              </StrainEffectsTwo>
+            </HorizonalSection>
+            {/* <StrainImage
+              src={photo}
+              width={40}
+              height={40}
+            /> */}
           </Card>
         </StrainLink>
       </SwiperSlide>
     ))}
   </SwiperZ>
-</Wrapper>
 )
 
 interface IPosts {
@@ -58,8 +59,9 @@ enum VARIANT {
 
 export default StrainCard
 
-const Wrapper = styled.section`
- 
+const HorizonalSection = styled.div`
+ display: flex;
+ flex-direction: row;
 `
 
 const SwiperZ = styled(Swiper)`
@@ -69,11 +71,11 @@ const SwiperZ = styled(Swiper)`
 const Card = styled.div`
   background: ${props => props.theme.palette.common.white};
   //border: 1px solid ${props => props.theme.palette.tertiary.main};
-  width: 175px;
+  width: 225px;
   margin: 10px 20px 20px 20px;
   padding: 5px 10px;
   box-shadow: rgba(99, 99, 99, 0.3) 0px 2px 8px 0px;
-  height: 260px;
+  height: 175px;
   border-radius: ${props => props.theme.borderRadius};
 `
 const StrainImage = styled(Image)`
@@ -114,9 +116,10 @@ const StrainType = styled.p`
 const StrainEffectsOne = styled.p`
   font-size: 16px;
   margin: .5em;
-  padding: .2em .5em;
+  padding: .2em;
+  text-align: center;
+  width: 100%;
   background-color: #40916C;
-  width: 60%;
   color: ${props => props.theme.palette.common.white};
   font-family: ${props => props.theme.font.primary};
   border-radius: ${props => props.theme.borderRadius};
@@ -125,9 +128,10 @@ const StrainEffectsOne = styled.p`
 const StrainEffectsTwo = styled.p`
   font-size: 16px;
   margin: .5em;
-  padding: .2em .5em;
+  padding: .2em;
+  text-align: center;
   background-color: ${props => props.theme.palette.tertiary.main};
-  width: 60%;
+  width: 100%;
   color: ${props => props.theme.palette.common.white};
   font-family: ${props => props.theme.font.primary};
   border-radius: ${props => props.theme.borderRadius};

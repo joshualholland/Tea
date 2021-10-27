@@ -7,16 +7,15 @@ import StrainSkeleton from './StrainSkeleton'
 import { strains } from '../../utils/data/straindata'
 import PrimaryButton from '../../components/Buttons/PrimaryButton'
 import { breakpoints } from '../../utils/styles/breakpoints'
-import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
-const StrainDisplay: React.FC<IPosts> = ({ name, type, effects, body, photo }) => (
+const StrainDisplay: React.FC<IPosts> = ({ name, type, effects, body, photo, ailment }) => (
   <ListWrapper>
     <StrainHeaderBox 
-    type={strains[0].type}
-    name={strains[0].name}
-    body={strains[0].body}
-    photo={strains[0].photo}
+    type={strains[1].type}
+    name={strains[1].name}
+    body={strains[1].body}
+    photo={strains[1].photo}
     effects={strains[0].effects}
     />
     <FilterWrapper>
@@ -25,13 +24,16 @@ const StrainDisplay: React.FC<IPosts> = ({ name, type, effects, body, photo }) =
       <FilterTitle>Sativa</FilterTitle>
     </FilterWrapper>
     {strains && strains.map((strain, index) => (
-      <StrainCard
-        name={strain.name}
-        type={strain.type}
-        body={strain.body}
-        photo={strain.photo}
-        effects={strain.effects}
-        key={strain.name} />
+      <StackedSection>
+        <RowTitle>{strain.ailment}</RowTitle>
+        <StrainCard
+          name={strain.name}
+          type={strain.type}
+          body={strain.body}
+          photo={strain.photo}
+          effects={strain.effects}
+          key={strain.name} />
+        </StackedSection>
         ))}
     <StrainSkeleton />
   </ListWrapper>
@@ -46,6 +48,7 @@ interface IPosts {
   },
   body: string,
   photo: string,
+  ailment: string
 }
 
 enum VARIANT {
@@ -99,14 +102,17 @@ const FilterTitle = styled.h3`
 
   :nth-child(3) {
     background-color: ${props => props.theme.palette.primary.main};
-  }
+  }  
 
-
-  
+`
+const StackedSection = styled.div`
 
 `
 
-const Body = styled.p`
-  font-size: 12px;
+const RowTitle = styled.h3`
+  padding: .25em 1.2em;
   color: ${props => props.theme.palette.common.black};
+  margin: 1em 1em;  
+  font-size: 20px;
+  font-family: ${props => props.theme.font.primary};
 `

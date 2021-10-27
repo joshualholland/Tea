@@ -11,17 +11,19 @@ const StrainSkeleton: React.FC = () => (
   <Wrapper>
     <Card>
       <StrainName />
-      <StrainImage />
       <StrainType />
-      <StrainEffectsOne />
-      <StrainEffectsTwo />
+      <HorizonalSection>
+        <StrainEffectsOne />
+        <StrainEffectsTwo />
+      </HorizonalSection>
     </Card>
     <Card>
       <StrainName />
-      <StrainImage />
       <StrainType />
-      <StrainEffectsOne />
-      <StrainEffectsTwo />
+      <HorizonalSection>
+        <StrainEffectsOne />
+        <StrainEffectsTwo />
+      </HorizonalSection>
     </Card>
   </Wrapper>
 )
@@ -52,14 +54,20 @@ const SwiperZ = styled(Swiper)`
   z-index: 0;
 `
 
+const HorizonalSection = styled.div`
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+`
+
 const Card = styled.div`
   background: ${props => props.theme.palette.common.white};
   //border: 1px solid ${props => props.theme.palette.tertiary.main};
-  width: 175px;
+  width: 225px;
   margin: 10px 20px 20px 20px;
   padding: 5px 10px;
   box-shadow: rgba(99, 99, 99, 0.3) 0px 2px 8px 0px;
-  height: 240px;
+  height: 175px;
   border-radius: ${props => props.theme.borderRadius};
 `
 const StrainImage = styled.div`
@@ -109,7 +117,7 @@ const StrainEffectsOne = styled.p`
   font-size: 16px;
   margin: 1em .5em;
   padding: .2em .5em;
-  width: 60%;
+  width: 100%;
   height: 10px;
   color: ${props => props.theme.palette.common.white};
   font-family: ${props => props.theme.font.primary};
@@ -124,7 +132,7 @@ const StrainEffectsTwo = styled.p`
   font-size: 16px;
   margin: .5em;
   padding: .2em .5em;
-  width: 60%;
+  width: 100%;
   height: 10px;
   color: ${props => props.theme.palette.common.white};
   font-family: ${props => props.theme.font.primary};
