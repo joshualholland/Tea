@@ -1,37 +1,39 @@
 import React from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
-import PrimaryButton from './Buttons/PrimaryButton'
 
-const Posts: React.FC<IPosts> = ({ title, strain, body, photo, user }) => (
+const Posts: React.FC<IPosts> = ({ name, thc, cbd, body, user }) => (
   <Items>
     <UserBanner>
       <Username>{user.username}</Username>
       <ProfilePhoto></ProfilePhoto>
     </UserBanner>
-    <ImageWrapper>
-      <Image src={photo}
-        layout='fill'
-        objectFit='cover'
-        alt='post photo'
-      />
-    </ImageWrapper>
-    <TextWrapper>
-      <Title>{title}</Title>
-      <StrainName>{strain}</StrainName>
+    <StrainInfo>
+      <StrainImage>
+        <Image src='/img/nug02.png' layout='fill' alt={name + ' photo'} />
+      </StrainImage>
+      <TextWrapper>
+        <StrainName>{name}</StrainName>
+        <StrainData>
+          <Percents>THC: {thc}%</Percents>
+          <Percents>CBD: {cbd}%</Percents>
+        </StrainData>
+        <StrainType>Indica</StrainType>
+      </TextWrapper>
+    </StrainInfo>
+    <Bottom>
       <Body>
-        {/* slicing the string to 100 characters, maybe we do it with words? */}
-        {body.slice(0, 115)}
+        {body.slice(0, 100)}
       </Body>
-    </TextWrapper>
-  </Items>
+    </Bottom>
+  </Items >
 )
 
 interface IPosts {
-  title: string,
-  strain: string,
+  name: string,
+  thc: string,
+  cbd: string,
   body: string,
-  photo: string,
   user: {
     username: string
   }
@@ -43,17 +45,15 @@ const Items = styled.div`
   display: flex;
   flex-flow: column;
   margin: 24px auto;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: ${props => props.theme.borderRadius};
   color: ${props => props.theme.palette.primary.main};
   height: auto;
 `
 
 const UserBanner = styled.div`
-  background-color: ${props => props.theme.palette.primary.main};
   width: 100%;
   height: 40px;
-  color: white;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   display: flex;
@@ -73,25 +73,55 @@ const ProfilePhoto = styled.div`
   height: 30px;
   width: 30px;
   border-radius: 50%;
-  background-color: ${props => props.theme.palette.secondary.main};
+  background-color: ${props => props.theme.palette.tertiary.main};
   border: 1px solid white;
   margin-right: 16px;
 `
 
-const TextWrapper = styled.div`
-  padding: 20px 15px;
+const StrainImage = styled.div`
+  height: 85px;
+  width: 85px;
+  position: relative;
 `
 
-const Title = styled.h3`
-  font-size: 30px;
-  font-family: ${props => props.theme.font.primary};
-  margin: 5px;
+const StrainInfo = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0 auto;
+`
+
+const TextWrapper = styled.div`
+  padding: 20px 15px;
+  margin-left: 24px;
 `
 
 const StrainName = styled.p`
   font-size: 16px;
   color: ${props => props.theme.palette.common.black};
   font-family: ${props => props.theme.font.secondary};
+  margin-bottom: 0;
+`
+
+const StrainData = styled.div`
+  display: flex;
+  flex-direction: row;
+`
+
+const Percents = styled.p`
+  font-size: 12px;
+  font-family: ${props => props.theme.font.primary};
+  color: ${props => props.theme.palette.tertiary.main};
+
+  &:first-child {
+    margin-right: 16px;
+  }
+`
+
+const StrainType = styled.p`
+  margin: 0;
+  font-size: 24px;
+  font-family: ${props => props.theme.font.primary};
 `
 
 
@@ -101,8 +131,9 @@ const Body = styled.p`
   font-family: ${props => props.theme.font.primary};
 `
 
-const ImageWrapper = styled.div`
-  width: 100%;
-  height: 300px;
-  position: relative;
+const Bottom = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 0 16px;
 `

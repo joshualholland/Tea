@@ -10,10 +10,10 @@ const ReviewLists: React.FC = () => (
       <List>
         {posts.map((post, index) => (
           <Posts
-            title={post.title}
-            strain={post.strain}
+            name={post.name}
+            thc={post.thc}
+            cbd={post.cbd}
             body={post.body}
-            photo={post.photo}
             user={post.user}
             key={index} />
         ))}
