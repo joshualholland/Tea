@@ -22,6 +22,23 @@ const Posts: React.FC<IPosts> = ({ name, thc, cbd, body, user }) => (
       </TextWrapper>
     </StrainInfo>
     <Bottom>
+      <Ratings>
+        <LeafWrapper>
+          <Image src='/img/8bitleaf.png' layout='fill' alt={'cannabis ratings'} />
+        </LeafWrapper>
+        <LeafWrapper>
+          <Image src='/img/8bitleaf.png' layout='fill' alt={'cannabis ratings'} />
+        </LeafWrapper>
+        <LeafWrapper>
+          <Image src='/img/8bitleaf.png' layout='fill' alt={'cannabis ratings'} />
+        </LeafWrapper>
+        <LeafWrapper>
+          <Image src='/img/8bitleaf.png' layout='fill' alt={'cannabis ratings'} />
+        </LeafWrapper>
+        <LeafWrapper>
+          <Image src='/img/8bitleaf.png' layout='fill' alt={'cannabis ratings'} />
+        </LeafWrapper>
+      </Ratings>
       <Body>
         {body.slice(0, 100)}
       </Body>
@@ -47,7 +64,6 @@ const Items = styled.div`
   margin: 24px auto;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: ${props => props.theme.borderRadius};
-  color: ${props => props.theme.palette.primary.main};
   height: auto;
 `
 
@@ -124,6 +140,12 @@ const StrainType = styled.p`
   font-family: ${props => props.theme.font.primary};
 `
 
+const Bottom = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 0 16px;
+`
 
 const Body = styled.p`
   font-size: 12px;
@@ -131,9 +153,23 @@ const Body = styled.p`
   font-family: ${props => props.theme.font.primary};
 `
 
-const Bottom = styled.div`
+const Ratings = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   margin: 0 auto;
-  padding: 0 16px;
+`
+
+const LeafWrapper = styled.div`
+  position: relative;
+  width: 30px;
+  height: 30px;
+  margin-left: 12px;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  img {
+    filter: grayscale(1);
+  }
 `
