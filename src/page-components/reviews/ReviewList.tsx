@@ -26,7 +26,7 @@ export default ReviewLists
 
 const Wrapper = styled.section`
   width: 100%;
-  max-width: 70vw;
+  max-width: 100vw;
   margin: 16px auto;
   border-radius: ${props => props.theme.borderRadius};
 `

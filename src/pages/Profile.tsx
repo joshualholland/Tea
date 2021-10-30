@@ -3,6 +3,7 @@ import React from 'react'
 import { NextSeo } from 'next-seo'
 import BackgroundHero from '../page-components/profile/BackgroundHero'
 import UserInfo from '../page-components/profile/UserInfo'
+import UserFeed from '../page-components/profile/UserFeed'
 
 const user: string = 'CannapiUser1234'
 
@@ -15,6 +16,7 @@ const Profile: NextPage = () => {
       />
       <BackgroundHero />
       <UserInfo />
+      <UserFeed/>
     </>
   )
 }

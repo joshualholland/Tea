@@ -76,7 +76,7 @@ const StrainImage = styled.div`
   padding: 10px;
   position: relative;
   animation: ${backgroundSkeleton} 3s ease infinite;
-  background: linear-gradient(270deg, #e6e6e6, #bbbbbb, #40916C);
+  background: linear-gradient(270deg, #e6e6e6, #bbbbbb, #966B9D);
   border-radius: 50%;
   background-size: 600% 600%;
 `
@@ -95,7 +95,7 @@ const StrainName = styled.p`
   color: ${props => props.theme.palette.common.black};
   font-family: ${props => props.theme.font.secondary};
   animation: ${backgroundSkeleton} 3s ease infinite;
-  background: linear-gradient(270deg, #e6e6e6, #bbbbbb, #40916C);
+  background: linear-gradient(270deg, #e6e6e6, #bbbbbb, #966B9D);
   border-radius: ${props => props.theme.borderRadius};
   background-size: 600% 600%; 
 `
@@ -108,7 +108,7 @@ const StrainType = styled.p`
   color: ${props => props.theme.palette.common.black};
   font-family: ${props => props.theme.font.primary};
   animation: ${backgroundSkeleton} 3s ease infinite;
-  background: linear-gradient(270deg, #e6e6e6, #bbbbbb, #40916C);
+  background: linear-gradient(270deg, #e6e6e6, #bbbbbb, #966B9D);
   border-radius: ${props => props.theme.borderRadius};
   background-size: 600% 600%; 
 `
@@ -123,7 +123,7 @@ const StrainEffectsOne = styled.p`
   font-family: ${props => props.theme.font.primary};
   border-radius: ${props => props.theme.borderRadius};
   animation: ${backgroundSkeleton} 3s ease infinite;
-  background: linear-gradient(270deg, #e6e6e6, #bbbbbb, #40916C);
+  background: linear-gradient(270deg, #e6e6e6, #bbbbbb, #966B9D);
   border-radius: ${props => props.theme.borderRadius};
   background-size: 600% 600%; 
 `
@@ -138,7 +138,7 @@ const StrainEffectsTwo = styled.p`
   font-family: ${props => props.theme.font.primary};
   border-radius: ${props => props.theme.borderRadius};
   animation: ${backgroundSkeleton} 3s ease infinite;
-  background: linear-gradient(270deg, #e6e6e6, #bbbbbb, #40916C);
+  background: linear-gradient(270deg, #e6e6e6, #bbbbbb, #966B9D);
   border-radius: ${props => props.theme.borderRadius};
   background-size: 600% 600%; 
 `
