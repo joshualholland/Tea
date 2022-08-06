@@ -5,7 +5,10 @@ import Image from 'next/image'
 const Posts: React.FC<IPosts> = ({ name, thc, cbd, body, user }) => (
   <Items>
     <UserBanner>
-      <Username>{user.username}</Username>
+      <div>
+        <Username>{user.username}</Username>
+        <Time>August 6th, 2022 at 4:34pm</Time>
+      </div>
       <ProfilePhoto></ProfilePhoto>
     </UserBanner>
     <StrainInfo>
@@ -22,23 +25,6 @@ const Posts: React.FC<IPosts> = ({ name, thc, cbd, body, user }) => (
       </TextWrapper>
     </StrainInfo>
     <Bottom>
-      <Ratings>
-        <LeafWrapper>
-          <Image src='/img/8bitleaf.png' layout='fill' alt={'cannabis ratings'} />
-        </LeafWrapper>
-        <LeafWrapper>
-          <Image src='/img/8bitleaf.png' layout='fill' alt={'cannabis ratings'} />
-        </LeafWrapper>
-        <LeafWrapper>
-          <Image src='/img/8bitleaf.png' layout='fill' alt={'cannabis ratings'} />
-        </LeafWrapper>
-        <LeafWrapper>
-          <Image src='/img/8bitleaf.png' layout='fill' alt={'cannabis ratings'} />
-        </LeafWrapper>
-        <LeafWrapper>
-          <Image src='/img/8bitleaf.png' layout='fill' alt={'cannabis ratings'} />
-        </LeafWrapper>
-      </Ratings>
       <Body>
         {body.slice(0, 100)}
       </Body>
@@ -80,9 +66,17 @@ const UserBanner = styled.div`
 
 const Username = styled.p`
   font-family: ${props => props.theme.font.secondary};
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.2;
   margin-left: 16px;
+  margin-bottom: 0;
+`
+
+const Time = styled.p`
+  font-family: ${props => props.theme.font.primary};
+  font-weight: 300;
+  margin: 0;
+  font-size: .7rem;
 `
 
 const ProfilePhoto = styled.div`

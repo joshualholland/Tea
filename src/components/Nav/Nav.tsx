@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Image from 'next/image'
 import { breakpoints } from '../../utils/styles/breakpoints'
 import Burger from './Burger'
 
@@ -12,6 +13,12 @@ const Nav: React.FC = () => {
           <Link href='/'>
             <Logo>Cannapi</Logo>
           </Link>
+          <Image
+            src='/img/notification.png'
+            height={36}
+            width={36}
+            alt='notifications'
+          />
           <Profile href='/profile'><div></div></Profile>
         </Items>
       </Inner>
@@ -47,7 +54,7 @@ const Inner = styled.div`
   max-width: 1048px;
   margin: 0 auto;
   padding: 0 12px;
-  height: 52px;
+  height: 3rem;
 `
 
 const Items = styled.div`
@@ -62,7 +69,7 @@ const Items = styled.div`
 `
 
 const Logo = styled.div<IProps>`
-  font-size: 24px;
+  font-size: 1.5rem;
   font-family: ${props => props.theme.font.secondary};
   color: ${props => props.theme.palette.tertiary.main};
   text-decoration: none;
@@ -91,8 +98,8 @@ const Profile = styled.a`
   }
 
   div {
-    height: 36px;
-    width: 36px;
+    height: 2.25rem;
+    width: 2.25rem;
     border-radius: 50%;
     background-color: ${props => props.theme.palette.tertiary.main};
     margin-left: auto;
