@@ -68,14 +68,15 @@ const Username = styled.p`
   font-family: ${props => props.theme.font.secondary};
   font-weight: 400;
   line-height: 1.2;
-  margin-left: 16px;
+  margin-left: 1rem;
   margin-bottom: 0;
+  color: ${props => props.theme.palette.tertiary.main};
 `
 
 const Time = styled.p`
   font-family: ${props => props.theme.font.primary};
   font-weight: 300;
-  margin: 0;
+  margin: .3rem 0 0 1rem;
   font-size: .7rem;
 `
 
