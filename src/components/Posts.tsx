@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import Image from 'next/image'
 
 const Posts: React.FC<IPosts> = ({ name, thc, cbd, body, user }) => (
   <Items>
@@ -12,16 +11,12 @@ const Posts: React.FC<IPosts> = ({ name, thc, cbd, body, user }) => (
       <ProfilePhoto></ProfilePhoto>
     </UserBanner>
     <StrainInfo>
-      <StrainImage>
-        <Image src='/img/nug02.png' layout='fill' alt={name + ' photo'} />
-      </StrainImage>
       <TextWrapper>
         <StrainName>{name}</StrainName>
         <StrainData>
           <Percents>THC: {thc}%</Percents>
           <Percents>CBD: {cbd}%</Percents>
         </StrainData>
-        <StrainType>Indica</StrainType>
       </TextWrapper>
     </StrainInfo>
     <Bottom>
@@ -89,22 +84,14 @@ const ProfilePhoto = styled.div`
   margin-right: 16px;
 `
 
-const StrainImage = styled.div`
-  height: 85px;
-  width: 85px;
-  position: relative;
-`
-
 const StrainInfo = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 0 auto;
 `
 
 const TextWrapper = styled.div`
-  padding: 20px 15px;
-  margin-left: 24px;
+  margin-left: 1rem;
 `
 
 const StrainName = styled.p`
@@ -129,12 +116,6 @@ const Percents = styled.p`
   }
 `
 
-const StrainType = styled.p`
-  margin: 0;
-  font-size: 24px;
-  font-family: ${props => props.theme.font.primary};
-`
-
 const Bottom = styled.div`
   display: flex;
   flex-direction: column;
@@ -146,25 +127,4 @@ const Body = styled.p`
   font-size: 12px;
   color: ${props => props.theme.palette.common.black};
   font-family: ${props => props.theme.font.primary};
-`
-
-const Ratings = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin: 0 auto;
-`
-
-const LeafWrapper = styled.div`
-  position: relative;
-  width: 30px;
-  height: 30px;
-  margin-left: 12px;
-
-  &:first-child {
-    margin-left: 0;
-  }
-
-  img {
-    filter: grayscale(1);
-  }
 `

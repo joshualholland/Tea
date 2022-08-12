@@ -4,7 +4,10 @@ import styled from 'styled-components'
 export const ProfileSection = () => (
   <Wrapper>
     <Container>
-      <Name>Joshua Holland</Name>
+      <Info>
+        <Photo></Photo>
+        <Name>Joshua Holland</Name>
+      </Info>
       <Stats>
         <Item>
           <Title>Following</Title>
@@ -36,6 +39,20 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+`
+
+const Info = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  margin: 0 0 1rem 1rem;
+`
+
+const Photo = styled.div`
+  border-radius: 50%;
+  background-color: ${props => props.theme.palette.tertiary.main};
+  height: 3.75rem;
+  width: 3.75rem;
 `
 
 const Name = styled.h1`
